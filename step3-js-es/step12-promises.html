@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+    <script>
+       /*        
+       Promise.resolve("promise was resolved");
+       Promise.reject(new Error("promise was rejected")); 
+       */
+       /* 
+       Create a promise
+       */
+        let promise = new Promise(function(resolve, reject){
+          setTimeout(function(){
+              if(true){
+                  resolve("resolve data from promise")
+                }else{
+                    reject("reject error from promise")
+                }
+            },2000)
+        });
+        /* 
+        using the promise
+        */
+       /*  promise.then( function(res){
+            console.log("Promise Resolved ", res)
+        });
+        promise.catch( function(err){
+            console.log("Promise Rejected ", err)
+        });
+        promise.finally( function(){
+            console.log("promise is now settled")
+        }); */
+        promise
+        .then( function(res){
+            console.log("Promise Resolved ", res)
+        })
+        .catch( function(err){
+            console.log("Promise Rejected ", err)
+        })
+        .finally( function(){
+            console.log("promise is now settled")
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
