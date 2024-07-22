@@ -1,0 +1,12 @@
+/* 10 */
+.box{
+    background-color: rgb(146, 241, 14);
+}
+/* 100 */
+#player{
+    background-color: rgb(12, 65, 210);
+}
+/* 1 */
+p, div, ul, ol, h1, span{
+    background-color: rgb(241, 165, 14); 
+}
