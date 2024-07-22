@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Classes
+        // properties
+            // public
+            // private
+            // static
+        // methods
+            // public
+            // private
+            // static
+        // constructor
+            // super
+        class Hero{
+            static version = 1001;
+            // public properties
+            title = "Ironman";
+            firstname = "Tony";
+            lastname = "Stark";
+            // private properties
+            #power = 6;
+            // public method
+            sayname(){
+                return this.firstname+" "+this.lastname;
+            }
+            get power(){
+                return this.#power
+            }
+            set power(npower){
+                this.#power = npower;
+            };
+            // private method
+            #saymission(){
+                return "save the world"
+            }
+        };
+
+        let hero = new Hero();
+
+        console.log(hero.title);// Ironman
+        console.log(hero.sayname());// Tony Stark
+        console.log(hero.power);// getter 
+        hero.power = 10; // setter
+        console.log(hero.power);// getter 
+
+        console.log(Hero.version);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
