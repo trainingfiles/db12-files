@@ -1,9 +1,8 @@
 open in browser v2.0.0 TechER
-
+++++++++++++++++++++++++++++++
 Auto Rename Tag
 v0.1.10
 Jun Han
-
 ++++++++++++++++++++++++++++++
 Live Server
 v5.7.9
