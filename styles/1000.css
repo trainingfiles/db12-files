@@ -1,0 +1,19 @@
+.container{
+    border: 1px solid grey;
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+}
+div[class *= "x"]{
+    width: 150px;
+    height: 150px;
+    color: azure;
+    font-size: 36px;
+    text-align: center;
+    line-height: 150px;
+    margin: 5px;
+}
+.box10{
+    background-color: #AE2012;
+} 
