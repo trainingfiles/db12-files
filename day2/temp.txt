@@ -1,102 +1,108 @@
 import React, { Component } from "react";
+import { ChildComp } from "./childcomp";
 class App extends Component{
     state = {
-        userinfo : {
-            title : "default",
-            firstname : "default",
-            lastname : "default",
-            city : "default",
-            power : 0
-        },
-        forminfo : {
-            title : "default",
-            firstname : "default",
-            lastname : "default",
-            city : "default",
-            power : 0
+        show : true,
+        version : 101
+    }
+    constructor(){
+        super();
+        console.log("App Component's Constructer was called");
+    }
+    render(){
+        console.log("App Component's Render was called");
+        return <div className="container">
+                   <h2>User Registeration Form Version : { this.state.version }</h2>
+                   <label htmlFor="">Show / Hide</label>
+                   <input type="checkbox" onChange={() => this.setState({ show : !this.state.show})} />
+                   <br />
+                   <button onClick={()=> this.setState({ version : Math.round( Math.random() * 1000 )})}>Change Version</button>
+                  { this.state.show ?  <ChildComp ver={this.state.version} /> : <p>child is hidden</p> }
+               </div>
+    }
+    componentDidMount(){
+        console.log("App Component's componentDidMount was called");
+    }
+};
+export default App;
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+import { Component } from "react";
+import { NestedChild } from "./nestedchild";
+
+export class ChildComp extends Component{
+    state = {
+        compversion : 0
+    }
+    constructor(){
+        super();
+        console.log("ChildComp Component's Constructer was called");
+        // this.state.compversion = 10;
+    }
+    static getDerivedStateFromProps(compprops, compstate){
+        // console.log(arguments[0], arguments[1])
+        return {
+            compversion : compprops.ver * 2
+        }
+    }
+    shouldComponentUpdate(compprops, compstate){
+        // console.log(arguments[0], arguments[1])
+        if(compprops.ver > 500){
+            return false
+        }else{
+            return true
         }
     }
     render(){
-        return <div className="container">
-                   <h2>User Registeration Form</h2>
-                   <div className="mb-3">
-                        <label className="form-label" htmlFor="title">User Title</label>
-                        <input value={this.state.title} onInput={this.setUserInfo} className="form-control" id="title" type="text" />
-                   </div>
-                   <div className="mb-3">
-                        <label className="form-label" htmlFor="firstname">First Name</label>
-                        <input value={this.state.firstname} onInput={this.setUserInfo} className="form-control" id="firstname" type="text" />
-                   </div>
-                   <div className="mb-3">
-                        <label className="form-label" htmlFor="lastname">Last Name</label>
-                        <input value={this.state.lastname} onInput={this.setUserInfo} className="form-control" id="lastname" type="text" />
-                   </div>
-                   <div className="mb-3">
-                        <label className="form-label" htmlFor="city">City</label>
-                        <input value={this.state.city} onInput={this.setUserInfo} className="form-control" id="city" type="text" />
-                   </div>
-                   <div className="mb-3">
-                        <label className="form-label" htmlFor="power">Power</label>
-                        <input defaultValue={this.state.power} onChange={this.setUserInfo} className="form-control" id="power" type="number" />
-                   </div>
-                   <div className="col-auto">
-                        <button onClick={this.formClickHandler} className="btn btn-primary mb-3">Register</button>
-                   </div> 
-                   <hr />
-                   <ul>
-                        <li>User Title : {this.state.userinfo.title}</li>
-                        <li>First Name : {this.state.userinfo.firstname}</li>
-                        <li>Last Name : {this.state.userinfo.lastname}</li>
-                        <li>City : {this.state.userinfo.city}</li>
-                        <li>Power : {this.state.userinfo.power}</li>
-                   </ul>
-                   <ul>
-                        <li>User Title : {this.state.forminfo.title}</li>
-                        <li>First Name : {this.state.forminfo.firstname}</li>
-                        <li>Last Name : {this.state.forminfo.lastname}</li>
-                        <li>City : {this.state.forminfo.city}</li>
-                        <li>Power : {this.state.forminfo.power}</li>
-                   </ul>
-               </div>
+       
+        console.log("ChildComp Component's Render was called");
+        return <div>
+                    <h3> Child Component </h3>
+                    <h5>Version {this.props.ver}</h5>
+                    <h5>Comp Version {this.state.compversion}</h5>
+                    <button onClick={() => this.props.ver = 100 }>Change Parent's Version</button>
+                    <NestedChild/>
+                </div>
     }
-   /*  
-    setTitle = (evt)=>{
-        this.setState({ title : evt.target.value })
+    componentDidMount(){
+        console.log("ChildComp Component's componentDidMount was called");
     }
-    setFirstName = (evt)=>{
-        this.setState({ firstname : evt.target.value })
+    componentWillUnmount(){
+        console.log("ChildComp Component's componentWillUnmount was called");
     }
-    setLastName = (evt)=>{
-        this.setState({ lastname : evt.target.value })
+    componentDidUpdate(){
+        console.log("ChildComp Component's componentDidUpdate was called");
     }
-    setCity = (evt)=>{
-        this.setState({ city : evt.target.value })
-    }
-    setPower = (evt)=>{
-        this.setState({ power : evt.target.value })
-    } 
-    */
-  /*  setPower = (evt)=>{
-    if(Number(evt.target.value) < 10){
-        alert("power is too less")
-    }else if(Number(evt.target.value) > 50){
-        alert("power is too much")
-    }else{
-        this.setState({ power : evt.target.value })
-    }
-   }  */
-   setUserInfo = (evt) => {
-    this.setState({ userinfo : { ...this.state.userinfo, [evt.target.id] : evt.target.value }  })
-   }
+}
 
-   formClickHandler = () => {
-        if(this.state.userinfo.power < 10){
-            alert("power is too less")
-        }else if( this.state.userinfo.power > 50){
-            alert("power is too much")
-        }else{
-            this.setState({ ...this.state, forminfo : this.state.userinfo })
-        }
-   }
-};
-export default App;
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+import { Component } from "react";
+
+export class NestedChild extends Component{
+    constructor(){
+        super();
+        console.log("NestedChild Component's Constructer was called");
+    }
+    render(){
+        console.log("NestedChild Component's Render was called");
+        return <div>
+                    <h4>
+                        Nested Child Component
+                    </h4>
+                </div>
+    }
+
+    componentDidMount(){
+        console.log("NestedChild Component's componentDidMount was called");
+    }
+    componentWillUnmount(){
+        console.log("NestedChild Component's componentWillUnmount was called");
+    }
+
+    componentDidUpdate(){
+        console.log("NestedChild Component's componentDidUpdate was called");
+    }
+
+}
