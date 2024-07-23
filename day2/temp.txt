@@ -11,24 +11,24 @@ class App extends Component{
         return <div className="container">
                    <h2>User Registeration Form</h2>
                    <div className="mb-3">
-                        <label className="form-label" htmlFor="utitle">User Title</label>
-                        <input value={this.state.title} className="form-control" id="utitle" type="text" />
+                        <label className="form-label" htmlFor="title">User Title</label>
+                        <input value={this.state.title} onInput={this.setUserInfo} className="form-control" id="title" type="text" />
                    </div>
                    <div className="mb-3">
-                        <label className="form-label" htmlFor="ufname">First Name</label>
-                        <input value={this.state.firstname} className="form-control" id="ufname" type="text" />
+                        <label className="form-label" htmlFor="firstname">First Name</label>
+                        <input value={this.state.firstname} onInput={this.setUserInfo} className="form-control" id="firstname" type="text" />
                    </div>
                    <div className="mb-3">
-                        <label className="form-label" htmlFor="ulname">Last Name</label>
-                        <input value={this.state.lastname} className="form-control" id="ulname" type="text" />
+                        <label className="form-label" htmlFor="lastname">Last Name</label>
+                        <input value={this.state.lastname} onInput={this.setUserInfo} className="form-control" id="lastname" type="text" />
                    </div>
                    <div className="mb-3">
-                        <label className="form-label" htmlFor="ucity">City</label>
-                        <input value={this.state.city} className="form-control" id="ucity" type="text" />
+                        <label className="form-label" htmlFor="city">City</label>
+                        <input value={this.state.city} onInput={this.setUserInfo} className="form-control" id="city" type="text" />
                    </div>
                    <div className="mb-3">
-                        <label className="form-label" htmlFor="upower">Power</label>
-                        <input value={this.state.power} className="form-control" id="upower" type="number" />
+                        <label className="form-label" htmlFor="power">Power</label>
+                        <input value={this.state.power} onInput={this.setUserInfo} className="form-control" id="power" type="number" />
                    </div>
                    {/* <div className="col-auto">
                         <button type="submit" className="btn btn-primary mb-3">Register</button>
@@ -43,5 +43,25 @@ class App extends Component{
                    </ul>
                </div>
     }
+   /*  
+    setTitle = (evt)=>{
+        this.setState({ title : evt.target.value })
+    }
+    setFirstName = (evt)=>{
+        this.setState({ firstname : evt.target.value })
+    }
+    setLastName = (evt)=>{
+        this.setState({ lastname : evt.target.value })
+    }
+    setCity = (evt)=>{
+        this.setState({ city : evt.target.value })
+    }
+    setPower = (evt)=>{
+        this.setState({ power : evt.target.value })
+    } 
+    */
+   setUserInfo = (evt) => {
+    this.setState({ [evt.target.id] : evt.target.value })
+   }
 };
 export default App;
