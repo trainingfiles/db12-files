@@ -1,11 +1,20 @@
 import React, { Component } from "react";
 class App extends Component{
     state = {
-        title : "default",
-        firstname : "default",
-        lastname : "default",
-        city : "default",
-        power : 0
+        userinfo : {
+            title : "default",
+            firstname : "default",
+            lastname : "default",
+            city : "default",
+            power : 0
+        },
+        forminfo : {
+            title : "default",
+            firstname : "default",
+            lastname : "default",
+            city : "default",
+            power : 0
+        }
     }
     render(){
         return <div className="container">
@@ -28,18 +37,25 @@ class App extends Component{
                    </div>
                    <div className="mb-3">
                         <label className="form-label" htmlFor="power">Power</label>
-                        <input defaultValue={this.state.power} onChange={this.setPower} className="form-control" id="power" type="number" />
+                        <input defaultValue={this.state.power} onChange={this.setUserInfo} className="form-control" id="power" type="number" />
                    </div>
-                   {/* <div className="col-auto">
-                        <button type="submit" className="btn btn-primary mb-3">Register</button>
-                   </div> */}
+                   <div className="col-auto">
+                        <button onClick={this.formClickHandler} className="btn btn-primary mb-3">Register</button>
+                   </div> 
                    <hr />
                    <ul>
-                    <li>User Title : {this.state.title}</li>
-                    <li>First Name : {this.state.firstname}</li>
-                    <li>Last Name : {this.state.lastname}</li>
-                    <li>City : {this.state.city}</li>
-                    <li>Power : {this.state.power}</li>
+                        <li>User Title : {this.state.userinfo.title}</li>
+                        <li>First Name : {this.state.userinfo.firstname}</li>
+                        <li>Last Name : {this.state.userinfo.lastname}</li>
+                        <li>City : {this.state.userinfo.city}</li>
+                        <li>Power : {this.state.userinfo.power}</li>
+                   </ul>
+                   <ul>
+                        <li>User Title : {this.state.forminfo.title}</li>
+                        <li>First Name : {this.state.forminfo.firstname}</li>
+                        <li>Last Name : {this.state.forminfo.lastname}</li>
+                        <li>City : {this.state.forminfo.city}</li>
+                        <li>Power : {this.state.forminfo.power}</li>
                    </ul>
                </div>
     }
@@ -60,7 +76,7 @@ class App extends Component{
         this.setState({ power : evt.target.value })
     } 
     */
-   setPower = (evt)=>{
+  /*  setPower = (evt)=>{
     if(Number(evt.target.value) < 10){
         alert("power is too less")
     }else if(Number(evt.target.value) > 50){
@@ -68,9 +84,19 @@ class App extends Component{
     }else{
         this.setState({ power : evt.target.value })
     }
-   } 
+   }  */
    setUserInfo = (evt) => {
-    this.setState({ [evt.target.id] : evt.target.value })
+    this.setState({ userinfo : { ...this.state.userinfo, [evt.target.id] : evt.target.value }  })
+   }
+
+   formClickHandler = () => {
+        if(this.state.userinfo.power < 10){
+            alert("power is too less")
+        }else if( this.state.userinfo.power > 50){
+            alert("power is too much")
+        }else{
+            this.setState({ ...this.state, forminfo : this.state.userinfo })
+        }
    }
 };
 export default App;
