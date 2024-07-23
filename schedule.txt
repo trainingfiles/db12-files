@@ -1,0 +1,57 @@
+UI / React Module
+
+0 Design Principles Topic 1 Day - 1
+
+1 Introduction to UI Programming Topic 1 Day - 1
+Role of UI Developer Subtopic
+How's different from UX Design? Subtopic
+Course content - UI Technologies Subtopic
+Expectations from the course Subtopic
+HTML Overview and Building blocks Subtopic
+
+2 Web Responsive Design Topic 3 Day - 1
+CSS media queries Subtopic
+Responsive designs using flexbox, CSS3 grids Subtopic
+Hands-on programming assignments Subtopic
+
+3 Advance JavaScript Topic 3 Day - 1
+OOPS - Classes and Interfaces Subtopic
+Functional programming Subtopic
+Classes vs Functional programming
+JavaScript vs Typescript
+ES6 features, Promises, Async Await Subtopic
+Hands-on programming assignments Subtopic
+
+Modules
+
+4 React Topic 12 Day2, Day3
+Introduction to React Subtopic
+Creating React Project Subtopic
+Understanding React Components and Properties, Explain component lifecycle Subtopic
+Stateful and Stateless components, Explain class vs functional components Subtopic
+Working with Events Subtopic
+Forms and Validation Subtopic
+Consuming RESTful web service Subtopic
+Generic components, theming, templating Subtopic
+React Hooks Subtopic
+State Management using Redux Subtopic
+Unit testing and coverage with React Testing Library Subtopic
+Hands-on programming assignments Subtopic
+Ag-grid, primereact Subtopic
+Debugging Subtopic
+
+5 Performance Topic 2 Day3
+Minification, dead code elimination(tree shaking) Subtopic
+Optimizing assets (images , videos) Subtopic
+Code level performance optimizations Subtopic
+
+6 Security Topic 1 Day3
+Authorization &amp; authentication Subtopic
+CSRF, XSRF Subtopic
+
+7 Tooling Topic 1 Day3
+Lighthouse/ Performance tooling Subtopic
+Developer tools Subtopic
+
+
+
