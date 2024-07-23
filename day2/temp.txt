@@ -1,0 +1,41 @@
+/* 
+import React, { Component } from "react";
+class ClassComp extends Component{
+    avengers = [];
+    ipref = React.createRef();
+    render(){
+        return <div>
+                   <h2>I am Class Component</h2>
+                   <input ref={this.ipref} type="text" />
+                   <button onClick={()=>{
+                    this.avengers.push(this.ipref.current.value);
+                    console.log(this.avengers);
+                    this.forceUpdate();
+                   }}>Add Avenger</button>
+                   <ol>{ this.avengers.map((val, idx)=> <li key={idx}>{val}</li>) }</ol>
+               </div>
+    }
+};
+
+export default ClassComp; 
+*/
+
+import React, { Component } from "react";
+class ClassComp extends Component{
+    state = {
+        avengers : []
+    }
+    ipref = React.createRef();
+    render(){
+        return <div>
+                   <h2>I am Class Component</h2>
+                   <input ref={this.ipref} type="text" />
+                   <button onClick={()=>{
+                    this.setState({ avengers : [...this.state.avengers,this.ipref.current.value]})
+                   }}>Add Avenger</button>
+                   <ol>{ this.state.avengers.map((val, idx)=> <li key={idx}>{val}</li>) }</ol>
+               </div>
+    }
+};
+
+export default ClassComp; 
