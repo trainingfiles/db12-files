@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Classes
+        // properties
+            // public
+            // private
+            // static
+        // methods
+            // public
+            // private
+            // static
+        // constructor
+            // super
+        class Person{
+            ability = "I can walk";
+            constructor(nability){
+                this.ability = nability;
+            }
+        }
+        class Hero extends Person{
+            static version = 1001;
+            // public properties
+            title;
+            firstname;
+            lastname;
+            // private properties
+            #power = 6;
+            constructor(htitle, hfname, hlname, hability){
+                super(hability);
+                this.title = htitle;
+                this.firstname = hfname;
+                this.lastname = hlname;
+            }
+            // public method
+            sayname(){
+                return this.firstname+" "+this.lastname;
+            }
+            get power(){
+                return this.#power
+            }
+            set power(npower){
+                this.#power = npower;
+            };
+            // private method
+            #saymission(){
+                return "save the world"
+            }
+        };
+
+        let hero1 = new Hero("Phantom","Kit","Walker","I can Ride");
+        let hero2 = new Hero("Ironman","Tony","Stark","I can Fly");
+
+        console.log(hero1.title);// Phantom
+        console.log(hero1.sayname());// Kit Walker
+        console.log(hero1.power);// getter 
+        hero1.power = 10; // setter
+        console.log(hero1.power);// getter 
+        console.log(hero1.ability);// I can ride 
+
+        console.log(hero2.title);// Ironman
+        console.log(hero2.sayname());// Tony Stark
+        console.log(hero2.power);// getter 
+        hero2.power = 10; // setter
+        console.log(hero2.power);// getter 
+        console.log(hero2.ability);// I can Fly 
+
+        console.log(Hero.version);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
