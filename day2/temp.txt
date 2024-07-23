@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { ChildComp } from "./childcomp";
+import axios from "axios";
+
 class App extends Component{
     state = {
         show : true,
-        version : 101
+        version : 101,
+        users : []
     }
     constructor(){
         super();
@@ -12,16 +15,24 @@ class App extends Component{
     render(){
         console.log("App Component's Render was called");
         return <div className="container">
-                   <h2>User Registeration Form Version : { this.state.version }</h2>
+                   <h2>Component Life Cycle | version : { this.state.version }</h2>
                    <label htmlFor="">Show / Hide</label>
                    <input type="checkbox" onChange={() => this.setState({ show : !this.state.show})} />
                    <br />
                    <button onClick={()=> this.setState({ version : Math.round( Math.random() * 1000 )})}>Change Version</button>
                   { this.state.show ?  <ChildComp ver={this.state.version} /> : <p>child is hidden</p> }
+                    <ul>
+                        { this.state.users.map( (val)=> <li key={val.id}>{val.email}</li>)}
+                    </ul>
                </div>
     }
     componentDidMount(){
-        console.log("App Component's componentDidMount was called");
+        // console.log("App Component's componentDidMount was called");
+        axios.get("https://reqres.in/api/users?page=1")
+        .then(( res )=> {
+            this.setState({users : res.data.data })
+        })
+        .catch(( err )=> console.log(err))
     }
 };
 export default App;
