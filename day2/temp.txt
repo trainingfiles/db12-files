@@ -3,13 +3,14 @@ class App extends Component{
     state = {
         power : 0
     }
-    /* numRef = React.createRef(); */
+   /* numRef = React.createRef(); */
    /*  
    constructor(){
         super();
         this.addPower = this.addPower.bind(this);
     } 
     */
+    numRef = React.createRef();
     render(){
         return <div>
                    <h2>I am Class Component</h2>
@@ -20,8 +21,8 @@ class App extends Component{
                    {/* <input ref={this.numRef} onChange={this.increasePowerRange} type="range" /> */}
                    <input onChange={(event)=> this.increasePowerRange(event)} type="range" />
                    <br />
-                   <input type="number" />
-                   <button>Set Power from Number</button>
+                   <input ref={this.numRef} type="number" />
+                   <button onClick={this.increasePowerNumber}>Set Power from Number</button>
                    <h3>Power is { this.state.power }</h3>
                </div>
     }
@@ -33,6 +34,11 @@ class App extends Component{
     increasePowerRange = (evt) => {
         this.setState({
             power : Number(evt.target.value)
+        })
+    }
+    increasePowerNumber = () => {
+        this.setState({
+            power : Number(this.numRef.current.value)
         })
     }
 };
