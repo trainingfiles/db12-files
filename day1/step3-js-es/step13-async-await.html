@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let promise = async function(){
+            return await new Promise(function(resolve, reject){
+                    setTimeout(function(){
+                        if(true){
+                            resolve("Resolve Data From Promise")
+                            }else{
+                                reject("Reject Error From Promise")
+                            }
+                        },5000)
+                    })
+        };
+
+        let nestedpromise = promise();
+        nestedpromise.then().catch().finally()
+    </script>   
+</head>
+<body>
+    
+</body>
+</html>
