@@ -28,7 +28,7 @@ class App extends Component{
                    </div>
                    <div className="mb-3">
                         <label className="form-label" htmlFor="power">Power</label>
-                        <input value={this.state.power} onInput={this.setUserInfo} className="form-control" id="power" type="number" />
+                        <input defaultValue={this.state.power} onChange={this.setPower} className="form-control" id="power" type="number" />
                    </div>
                    {/* <div className="col-auto">
                         <button type="submit" className="btn btn-primary mb-3">Register</button>
@@ -60,6 +60,15 @@ class App extends Component{
         this.setState({ power : evt.target.value })
     } 
     */
+   setPower = (evt)=>{
+    if(Number(evt.target.value) < 10){
+        alert("power is too less")
+    }else if(Number(evt.target.value) > 50){
+        alert("power is too much")
+    }else{
+        this.setState({ power : evt.target.value })
+    }
+   } 
    setUserInfo = (evt) => {
     this.setState({ [evt.target.id] : evt.target.value })
    }
