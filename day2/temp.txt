@@ -1,8 +1,9 @@
-import { Component } from "react";
+import React, { Component } from "react";
 class App extends Component{
     state = {
         power : 0
     }
+    /* numRef = React.createRef(); */
    /*  
    constructor(){
         super();
@@ -15,12 +16,23 @@ class App extends Component{
                    {/* <button onClick={this.addPower.bind(this)}>Increase Power</button> */}
                    {/* <button onClick={this.addPower}>Increase Power</button> */}
                    <button onClick={this.addPower}>Increase Power</button>
+                   <br />
+                   {/* <input ref={this.numRef} onChange={this.increasePowerRange} type="range" /> */}
+                   <input onChange={(event)=> this.increasePowerRange(event)} type="range" />
+                   <br />
+                   <input type="number" />
+                   <button>Set Power from Number</button>
                    <h3>Power is { this.state.power }</h3>
                </div>
     }
     addPower = () => {
         this.setState({
             power : this.state.power + 1
+        })
+    }
+    increasePowerRange = (evt) => {
+        this.setState({
+            power : Number(evt.target.value)
         })
     }
 };
