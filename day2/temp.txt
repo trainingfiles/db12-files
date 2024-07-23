@@ -1,45 +1,47 @@
 import React, { Component } from "react";
 class App extends Component{
     state = {
+        title : "default",
+        firstname : "default",
+        lastname : "default",
+        city : "default",
         power : 0
     }
-   /* numRef = React.createRef(); */
-   /*  
-   constructor(){
-        super();
-        this.addPower = this.addPower.bind(this);
-    } 
-    */
-    numRef = React.createRef();
     render(){
-        return <div>
-                   <h2>I am Class Component</h2>
-                   {/* <button onClick={this.addPower.bind(this)}>Increase Power</button> */}
-                   {/* <button onClick={this.addPower}>Increase Power</button> */}
-                   <button onClick={this.addPower}>Increase Power</button>
-                   <br />
-                   {/* <input ref={this.numRef} onChange={this.increasePowerRange} type="range" /> */}
-                   <input onChange={(event)=> this.increasePowerRange(event)} type="range" />
-                   <br />
-                   <input ref={this.numRef} type="number" />
-                   <button onClick={this.increasePowerNumber}>Set Power from Number</button>
-                   <h3>Power is { this.state.power }</h3>
+        return <div className="container">
+                   <h2>User Registeration Form</h2>
+                   <div className="mb-3">
+                        <label className="form-label" htmlFor="utitle">User Title</label>
+                        <input value={this.state.title} className="form-control" id="utitle" type="text" />
+                   </div>
+                   <div className="mb-3">
+                        <label className="form-label" htmlFor="ufname">First Name</label>
+                        <input value={this.state.firstname} className="form-control" id="ufname" type="text" />
+                   </div>
+                   <div className="mb-3">
+                        <label className="form-label" htmlFor="ulname">Last Name</label>
+                        <input value={this.state.lastname} className="form-control" id="ulname" type="text" />
+                   </div>
+                   <div className="mb-3">
+                        <label className="form-label" htmlFor="ucity">City</label>
+                        <input value={this.state.city} className="form-control" id="ucity" type="text" />
+                   </div>
+                   <div className="mb-3">
+                        <label className="form-label" htmlFor="upower">Power</label>
+                        <input value={this.state.power} className="form-control" id="upower" type="number" />
+                   </div>
+                   {/* <div className="col-auto">
+                        <button type="submit" className="btn btn-primary mb-3">Register</button>
+                   </div> */}
+                   <hr />
+                   <ul>
+                    <li>User Title : {this.state.title}</li>
+                    <li>First Name : {this.state.firstname}</li>
+                    <li>Last Name : {this.state.lastname}</li>
+                    <li>City : {this.state.city}</li>
+                    <li>Power : {this.state.power}</li>
+                   </ul>
                </div>
-    }
-    addPower = () => {
-        this.setState({
-            power : this.state.power + 1
-        })
-    }
-    increasePowerRange = (evt) => {
-        this.setState({
-            power : Number(evt.target.value)
-        })
-    }
-    increasePowerNumber = () => {
-        this.setState({
-            power : Number(this.numRef.current.value)
-        })
     }
 };
 export default App;
