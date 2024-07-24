@@ -101,3 +101,26 @@ export default ChildComp;
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+import { useEffect, useState } from "react";
+import ChildComp from "./component/childcomp";
+
+let App = () => {
+  let [version, setVersion] = useState(100);
+  let [show, setShow] = useState(true);
+    // componentDidMount
+    useEffect(()=>{
+        console.log("App was mounted")
+    },[]);
+    return <div>
+            <h2>Welcome to your life</h2>
+            <button onClick={() => setVersion(Math.round(Math.random() * 1000 ))}>Change Version</button>
+            <button onClick={() => setShow(!show)}>Show / Hide</button>
+            { show && <ChildComp ver={version}/> }
+           </div>
+}
+export default App;
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
