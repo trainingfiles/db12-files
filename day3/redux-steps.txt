@@ -10,6 +10,8 @@ let createStore = redux.legacy_createStore;
 // action type
 let ADD_HERO = "ADD_HERO";
 let REMOVE_HERO = "REMOVE_HERO";
+let ADD_MOVIE = "ADD_MOVIE";
+let REMOVE_MOVIE = "REMOVE_MOVIE";
 
 // action creator
 let addHero = () => {
@@ -22,17 +24,30 @@ let removeHero = () => {
         type : REMOVE_HERO
     }
 };
+let addMovie = () => {
+    return {
+        type : ADD_MOVIE
+    }
+};
+let removeMovie = () => {
+    return {
+        type : REMOVE_MOVIE
+    }
+};
 
 // initial State
 let initalState = {
-    numberOfHeroes : 0
+    numberOfHeroes : 0,
+    numberOfMovies : 0
 }
 
 // reducer are purefunctions 
 let reducer = (state = initalState, action) => {
     switch(action.type){
-        case ADD_HERO : return { numberOfHeroes : state.numberOfHeroes + 1 }
-        case REMOVE_HERO : return { numberOfHeroes : state.numberOfHeroes - 1 }
+        case ADD_HERO : return {...state, numberOfHeroes : state.numberOfHeroes + 1 }
+        case REMOVE_HERO : return {...state, numberOfHeroes : state.numberOfHeroes - 1 }
+        case ADD_MOVIE : return {...state, numberOfMovies : state.numberOfMovies + 1 }
+        case REMOVE_MOVIE : return {...state, numberOfMovies : state.numberOfMovies - 1 }
         default : return state
     }
 }
@@ -51,4 +66,9 @@ store.dispatch(addHero());
 store.dispatch(addHero());
 store.dispatch(removeHero());
 store.dispatch(removeHero());
+store.dispatch(addMovie());
+store.dispatch(addMovie());
+store.dispatch(addMovie());
+store.dispatch(removeMovie());
+store.dispatch(removeMovie());
 
