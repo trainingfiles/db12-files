@@ -27,3 +27,33 @@ let HeroList = () => {
 export default HeroList;
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+import { useRef, useState } from "react";
+
+let UsersList = () => {
+    let [user, setUsers] = useState({ firstname : "asdf", lastname : "awerwer" });
+    let fname = useRef();
+    let lname = useRef();
+    return <div>
+                <h3>Users Info</h3>
+                <label htmlFor="fname">First Name</label>
+                &nbsp;
+                &nbsp;
+                <input onInput={(evt)=> setUsers({...user, firstname : evt.target.value })} value={user.firstname} id="fname" ref={fname} type="text" />
+                <br />
+                <label htmlFor="lname">Last Name</label>
+                &nbsp;
+                &nbsp;
+                <input onInput={()=> setUsers({...user, lastname : lname.current.value })} value={user.lastname} id="lname" ref={lname} type="text" />
+
+                <ul>
+                    <li>First Name : {user.firstname}</li>
+                    <li>Last Name : {user.lastname}</li>
+                </ul>
+            </div>
+}
+
+export default UsersList;
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
