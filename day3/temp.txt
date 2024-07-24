@@ -5,3 +5,25 @@ npm create vite@latest steps -- --template react
 cd step4
 npm i 
 npm run dev
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+import { useState, createRef } from "react";
+
+let HeroList = () => {
+    let [avengers, setAvengers] = useState(['Ironman','Hulk','Thor']);
+    let ipref = createRef()
+    return <div>
+                <h3>Avengers</h3>
+                <input ref={ipref} type="text" />
+                <button onClick={() => setAvengers([...avengers, ipref.current.value])}>Add Avenger</button>
+                <ol>
+                { avengers.map((val, idx) => <li key={idx}>{ val }</li>) }
+                </ol>
+            </div>
+}
+
+export default HeroList;
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
