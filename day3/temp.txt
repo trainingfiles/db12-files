@@ -121,6 +121,42 @@ let App = () => {
 export default App;
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+import { useEffect, useState } from "react";
+import axios from "axios";
 
+let UsersComp = () => {
+let [users, setUsers] = useState([]);
+
+useEffect(()=>{
+    axios
+    .get("http://jsonplaceholder.typicode.com/users")
+    .then(dbres => setUsers(dbres.data))
+    .catch(err => console.log("Error ", err))
+},[])
+
+    return <div>
+            <h3>Users Component</h3>
+            <hr />
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Sl #</th>
+                        <th>Name</th>
+                        <th>User Name</th>
+                        <th>eMail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { users.map((val) => <tr key={val.id}> 
+                                            <td>{val.id }</td> 
+                                            <td>{val.name}</td> 
+                                            <td>{val.username}</td> 
+                                            <td>{val.email}</td> 
+                                         </tr>)}
+                </tbody>
+            </table>
+           </div>
+}
+export default UsersComp;
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
