@@ -57,3 +57,47 @@ export default UsersList;
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+import { useEffect, useState } from "react";
+
+let ChildComp = ({ver}) => {
+let [power, setPower] = useState(0)
+    /*     
+    useEffect(function(){
+     // will be called when the component is mounted   
+     // will be called when the component's dependencies are updated  
+     return function(){
+            // will be called when the component is unmounted  
+        }
+    },[])// dependency array 
+    */
+    // componentDidMount
+    useEffect(()=>{
+        console.log("ChildComp was mounted")
+    },[]);
+    // componentDidUpdate
+    useEffect(()=>{
+        console.log("ChildComp was rerendered because power was updated to ",power)
+    },[power]);
+    // componentDidUpdate
+    useEffect(()=>{
+        console.log("ChildComp was rerendered because version was updated to ",ver)
+    },[ver]);
+    // componentDidUnMount
+    useEffect(()=>{
+        return function(){
+            console.log("ChildComp was unmounted")
+        }
+    },[]);
+
+    return <div>
+            <h3>Child Component</h3>
+            <h4>Power : { power }</h4>
+            <h4>Version : { ver }</h4>
+            <button onClick={() => setPower(power+1)}>Increase Power</button>
+            <button onClick={() => setPower(power-1)}>Decrease Power</button>
+           </div>
+}
+export default ChildComp;
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
