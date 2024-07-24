@@ -1,1 +1,7 @@
 https://vitejs.dev/guide/
+
+
+npm create vite@latest steps -- --template react 
+cd step4
+npm i 
+npm run dev
