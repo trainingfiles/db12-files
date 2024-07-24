@@ -4,17 +4,22 @@ create a file by name step1.js
 and change the package.json's main to step1.js
 paste this code in step1.js
 ============================================
-
 let redux = require("redux");
 let createStore = redux.legacy_createStore;
 
 // action type
 let ADD_HERO = "ADD_HERO";
+let REMOVE_HERO = "REMOVE_HERO";
 
 // action creator
 let addHero = () => {
     return {
         type : ADD_HERO
+    }
+};
+let removeHero = () => {
+    return {
+        type : REMOVE_HERO
     }
 };
 
@@ -27,6 +32,7 @@ let initalState = {
 let reducer = (state = initalState, action) => {
     switch(action.type){
         case ADD_HERO : return { numberOfHeroes : state.numberOfHeroes + 1 }
+        case REMOVE_HERO : return { numberOfHeroes : state.numberOfHeroes - 1 }
         default : return state
     }
 }
@@ -39,6 +45,10 @@ store.subscribe(() => {
     console.log(store.getState());
 });
 
-setInterval(function(){
-    store.dispatch(addHero());
-}, 1000)
+
+store.dispatch(addHero());
+store.dispatch(addHero());
+store.dispatch(addHero());
+store.dispatch(removeHero());
+store.dispatch(removeHero());
+
