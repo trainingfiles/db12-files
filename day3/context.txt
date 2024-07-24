@@ -1,0 +1,88 @@
+  grandcomp.jsx
+  ----------
+import { useState } from "react";
+import ParentComp from "./parentcomp";
+
+let GrandParentComp = () => {
+    let [power, setPower] = useState(1)
+    return <div className="card">
+            <div className="card-body">
+             <h3 className="card-title">GrandParent Component | power is { power }</h3>
+                <button className="btn btn-primary mb-3" onClick={()=> setPower(power + 1)}>Increase Power</button>
+                <ParentComp power={ power }/>
+            </div>
+           </div>
+}
+export default GrandParentComp;
+
+#################################################################################
+parentcomp.jsx
+  ----------------
+
+  import ChildComp from "./childcomp";
+
+let ParentComp = (props) => {
+    return <div className="card">
+                <div className="card-body">
+                    <h3 className="card-title">Parent Component</h3>
+                    <ChildComp power={props.power}/>
+                </div>
+           </div>
+}
+export default ParentComp;
+#################################################################################
+childcomp.jsx
+  -----------
+
+  let ChildComp = (props) => {
+    return <div className="card">
+            <div className="card-body">
+                <h3 className="card-title">Child Component</h3>
+                <h4>Power set by Grand Parent Component is {props.power}</h4>
+             </div>
+           </div>
+}
+export default ChildComp;
+
+#################################################################################
+app.jsx
+  -----------
+
+  import GrandParentComp from "./components/grandcomp";
+
+let App = () => {
+    return <div className="container">
+             <h2>Context API</h2>
+             <GrandParentComp/>
+           </div>
+}
+export default App;
+
+#################################################################################
+main.jsx
+  -----------
+
+  import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+
+ReactDOM.createRoot(document.getElementById('root'))
+.render(<App />)
+#################################################################################
+index.html
+  ------------
+
+  <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DB React Training</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+#################################################################################
