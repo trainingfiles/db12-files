@@ -1,3 +1,10 @@
+npm init -y
+npm i redux
+create a file by name step1.js
+and change the package.json's main to step1.js
+paste this code in step1.js
+============================================
+
 let redux = require("redux");
 let createStore = redux.legacy_createStore;
 
